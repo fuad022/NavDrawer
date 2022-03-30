@@ -21,54 +21,50 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun init() {
-        binding.apply {
+        setSupportActionBar(binding.mainToolbar)
+        val actionBarDrawerToggle = ActionBarDrawerToggle(
+            this@MainActivity,
+            binding.drawerLayout,
+            binding.mainToolbar,
+            R.string.openNavDrawer,
+            R.string.closeNavDrawer
+        )
 
-            setSupportActionBar(mainToolbar)
-            val actionBarDrawerToggle = ActionBarDrawerToggle(
-                this@MainActivity,
-                drawerLayout,
-                mainToolbar,
-                R.string.openNavDrawer,
-                R.string.closeNavDrawer
-            )
+        binding.drawerLayout.addDrawerListener(actionBarDrawerToggle)
+        actionBarDrawerToggle.syncState()
 
-            drawerLayout.addDrawerListener(actionBarDrawerToggle)
-            actionBarDrawerToggle.syncState()
-
-            navView.setNavigationItemSelectedListener {
-                when (it.itemId) {
-                    R.id.folder -> {
-                        toast("Folder clicked")
-                        true
-                    }
-                    R.id.people -> {
-                        toast("People clicked")
-                        true
-                    }
-                    R.id.star -> {
-                        toast("Star clicked")
-                        true
-                    }
-                    R.id.access_time -> {
-                        toast("Access clicked")
-                        true
-                    }
-                    R.id.backup -> {
-                        toast("Backup clicked")
-                        true
-                    }
-                    R.id.settings_app -> {
-                        toast("Settings app clicked")
-                        true
-                    }
-                    R.id.power -> {
-                        toast("Power clicked")
-                        true
-                    }
-                    else -> false
+        binding.navView.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.folder -> {
+                    toast("Folder clicked")
+                    true
                 }
+                R.id.people -> {
+                    toast("People clicked")
+                    true
+                }
+                R.id.star -> {
+                    toast("Star clicked")
+                    true
+                }
+                R.id.access_time -> {
+                    toast("Access clicked")
+                    true
+                }
+                R.id.backup -> {
+                    toast("Backup clicked")
+                    true
+                }
+                R.id.settings_app -> {
+                    toast("Settings app clicked")
+                    true
+                }
+                R.id.power -> {
+                    toast("Power clicked")
+                    true
+                }
+                else -> false
             }
-
         }
     }
 
